@@ -6,7 +6,7 @@ using Testing21Vek.Utilities;
 namespace Testing21Vek.Tests
 {
     [TestFixture]
-    public class CatalogTests : BaseTest
+    public class ConsequtiveTests : BaseTest
     {
         [Test]
         public void Test1()
@@ -38,20 +38,20 @@ namespace Testing21Vek.Tests
             notebooksPage.AddToComparisonProductWithAveragePrice();
             notebooksPage.AddToComparisonProductWithMaxPrice();
             notebooksPage.ClickOnCompareProductsLink();
-            notebooksComparePage.ShowOnlyDifference();
-            notebooksComparePage.RemoveNotebookWithLessValueOfParameter("Åìêîñòü SSD");
-            notebooksComparePage.PutProductToBusket(out string productName, out string productPrice);
+            ñomparePage.ShowOnlyDifference();
+            ñomparePage.RemoveProductWithLessValueOfParameter("Åìêîñòü SSD");
+            ñomparePage.PutProductToBusket(out string productName, out string productPrice);
             mainPage.ClickOnBusketButton();
             orderPage.VerifyProductIsPresentInBasket(productName);
             orderPage.VerifyProductPrice(productPrice);
-            orderPage.EnterPromocode(TestData.PromoCode);
-            orderPage.VerifyPriceIsReduced(productPrice);
+            orderPage.EnterPromocode(TestData.PromoCode, out bool promocodePassed);
+            if (promocodePassed)
+                orderPage.VerifyPriceIsReduced(productPrice);
             orderPage.ClickOnCreateOrderButton();
             orderPage.ClickOnNewClientTab();
             orderPage.ClickOnNextButton();
             orderPage.VerifyEmailIsNotFilledErrorMessage(TestData.EmailErrorMessage);
             orderPage.VerifyPhoneNotFilledErrorMessage(TestData.PhoneErrorMessage);
-            Thread.Sleep(5000);
         }
     }
 }

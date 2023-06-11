@@ -16,6 +16,9 @@ namespace Testing21Vek.PageObjects
         private readonly By _minPriceTextbox = By.XPath("//dt[contains(text(), 'Цена,')]/../dd/label[1]//input");
         private readonly By _maxPriceTextbox = By.XPath("//dt[contains(text(), 'Цена,')]/../dd/label[2]//input");
         private readonly By _inPlaceCheckbox = By.XPath("//label[contains(text(), 'В наличии')]");
+        private readonly By _onOrderCheckbox = By.XPath("//label[contains(text(), 'Под заказ')]");
+        private readonly By _productLineShowMoreLink = By.XPath("//dt/span[text()='Линейка']/../..//span[text()='Показать всё']");
+        private readonly By _productLineLink = By.XPath("//dt/span[text()='Линейка']");
         private readonly By _showProductsButton = By.XPath("//span[contains(text(), 'Показать товары')]");
         private readonly By _priceText = By.XPath("//ul[contains(@class, 'result')]/li//span[contains(@class, 'item-data')]");
         private readonly By _compareProductsLink = By.LinkText("Сравнить товары");
@@ -46,11 +49,44 @@ namespace Testing21Vek.PageObjects
             driver.FindElement(_inPlaceCheckbox).Click();
         }
 
-        public void SelectProductBrand(string brand)  //ToDo: use params
+        public void SetOnOrder()
         {
-            var productBrandLocator = GetProductBrandLocator(brand);
-            WaitUntil.WaitElement(driver, productBrandLocator);
-            driver.FindElement(productBrandLocator).Click();
+            WaitUntil.WaitElement(driver, _onOrderCheckbox);
+            driver.FindElement(_onOrderCheckbox).Click();
+        }
+
+        public void SelectProductBrand(params string[] brands)
+        {
+            for (int i = 0; i < brands.Length; i++)
+            {
+                var productLineLocator = GetProductFilterItemLocator(brands[i]);
+                if (IsElementPresent(productLineLocator))
+                    driver.FindElement(productLineLocator).Click();
+            }
+        }
+
+        public void SelectProductLines(params string[] lines)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 500)");
+
+            WaitUntil.WaitElement(driver, _productLineLink);
+            driver.FindElement(_productLineLink).Click();
+
+            if (IsElementPresent(_productLineShowMoreLink))
+                driver.FindElement(_productLineShowMoreLink).Click();
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var productLineLocator = GetProductFilterItemLocator(lines[i]);
+                if (IsElementPresent(productLineLocator))
+                    driver.FindElement(productLineLocator).Click();
+            }
+        }
+
+        protected By GetProductFilterItemLocator(string item)
+        {
+            return By.XPath($"//dd/label[text()='{item}']");
         }
 
         public void AddToComparisonProductWithAveragePrice()

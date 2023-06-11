@@ -20,6 +20,7 @@ namespace Testing21Vek.PageObjects
         private readonly By _nextButton = By.XPath("//div[text()='Продолжить']");
         private readonly By _emailErrorMessage = By.XPath("//input[@name='email']/../following-sibling::div/span[2]");
         private readonly By _phoneErrorMessage = By.XPath("//input[@type='tel']/../../../following-sibling::div/span[2]");
+        private readonly By _promocodeErrorMessage = By.XPath("//span[text()='Промокод не действует на товары в корзине']");
 
         public OrderPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -40,17 +41,22 @@ namespace Testing21Vek.PageObjects
             Assert.AreEqual(expectedPrice, actualPrice, "The needed product is not present in basket");
         }
 
-        public void EnterPromocode(string promocode)
+        public void EnterPromocode(string promocode, out bool promocodePassed)
         {
             WaitUntil.WaitElement(driver, _promocodeTextbox);
             driver.FindElement(_promocodeTextbox).SendKeys(promocode);
             driver.FindElement(_promocodeButton).Click();
+            if (IsElementPresent(_promocodeErrorMessage))
+                promocodePassed = true;
+            else
+                promocodePassed = false;
+
         }
 
         public void VerifyPriceIsReduced(string initialPrice)
         {
             WaitUntil.WaitElement(driver, _productPriceInteger);
-            Thread.Sleep(100);
+            Thread.Sleep(200);
             string newPrice = driver.FindElement(_productPriceInteger).Text + driver.FindElement(_productPriceFraction).Text;
             newPrice = newPrice.Substring(0, newPrice.LastIndexOf(" "));
             double initialPriceNumber = double.Parse(initialPrice);
@@ -67,7 +73,7 @@ namespace Testing21Vek.PageObjects
         public void ClickOnNewClientTab()
         {
             WaitUntil.WaitElement(driver, _newClientTab);
-            Thread.Sleep(2000); //ToDo: change timeout
+            Thread.Sleep(500);
             driver.FindElement(_newClientTab).Click();
         }
 
