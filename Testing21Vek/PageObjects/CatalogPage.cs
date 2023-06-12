@@ -85,7 +85,7 @@ namespace Testing21Vek.PageObjects
         public void AddToComparisonProductWithAveragePrice()
         {
             WaitUntil.WaitElement(driver, _priceText);
-            var priceList = driver.FindElements(_priceText).Select(x => Convert.ToDouble(x.Text)).ToList();
+            var priceList = driver.FindElements(_priceText).Select(x => double.Parse(x.Text.Remove(x.Text.IndexOf(" "), 1))).ToList();
             double average = priceList.Sum() / priceList.Count;
             var diffList = priceList.Select(x => Math.Abs(x - average)).ToList();
             var index = diffList.IndexOf(diffList.Min());
@@ -96,7 +96,7 @@ namespace Testing21Vek.PageObjects
         public void AddToComparisonProductWithMaxPrice()
         {
             WaitUntil.WaitElement(driver, _priceText);
-            var priceList = driver.FindElements(_priceText).Select(x => Convert.ToDouble(x.Text)).ToList();
+            var priceList = driver.FindElements(_priceText).Select(x => double.Parse(x.Text.Remove(x.Text.IndexOf(" "), 1))).ToList();
             double maxPrice = priceList.Max();
             var index = priceList.LastIndexOf(maxPrice);
             var addToComparisonLocator = GetAddToComparisonLocator(index+1);

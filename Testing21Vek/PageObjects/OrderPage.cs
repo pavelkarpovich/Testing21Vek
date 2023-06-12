@@ -55,8 +55,8 @@ namespace Testing21Vek.PageObjects
             Thread.Sleep(200);
             string newPrice = driver.FindElement(_productPriceInteger).Text + driver.FindElement(_productPriceFraction).Text;
             newPrice = newPrice.Substring(0, newPrice.LastIndexOf(" "));
-            double initialPriceNumber = double.Parse(initialPrice);
-            double newPriceNumber = double.Parse(newPrice);
+            double initialPriceNumber = double.Parse(initialPrice.Remove(initialPrice.IndexOf(" "), 1));
+            double newPriceNumber = double.Parse(newPrice.Remove(newPrice.IndexOf(" "), 1));
             Assert.IsTrue(initialPriceNumber > newPriceNumber, "Price with promocode is not less that initial price");
         }
 
