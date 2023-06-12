@@ -20,9 +20,9 @@
             padsPage.AddToComparisonProductWithAveragePrice();
             padsPage.AddToComparisonProductWithMaxPrice();
             padsPage.ClickOnCompareProductsLink();
-            сomparePage.ShowOnlyDifference();
-            сomparePage.RemoveProductWithLessValueOfParameter("Встроенная память");
-            сomparePage.PutProductToBusket(out string productName, out string productPrice);
+            comparePage.ShowOnlyDifference();
+            comparePage.RemoveProductWithLessValueOfParameter("Встроенная память");
+            comparePage.PutProductToBusket(out string productName, out string productPrice);
             mainPage.ClickOnBusketButton();
             orderPage.VerifyProductIsPresentInBasket(productName);
             orderPage.VerifyProductPrice(productPrice);
@@ -53,9 +53,9 @@
             consolesPage.AddToComparisonProductWithAveragePrice();
             consolesPage.AddToComparisonProductWithMaxPrice();
             consolesPage.ClickOnCompareProductsLink();
-            сomparePage.ShowOnlyDifference();
-            сomparePage.RemoveProductWithLessValueOfParameter("Частота графического процессора");
-            сomparePage.PutProductToBusket(out string productName, out string productPrice);
+            comparePage.ShowOnlyDifference();
+            comparePage.RemoveProductWithLessValueOfParameter("Частота графического процессора");
+            comparePage.PutProductToBusket(out string productName, out string productPrice);
             mainPage.ClickOnBusketButton();
             orderPage.VerifyProductIsPresentInBasket(productName);
             orderPage.VerifyProductPrice(productPrice);

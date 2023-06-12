@@ -35,9 +35,9 @@ namespace Testing21Vek.Tests
             notebooksPage.AddToComparisonProductWithAveragePrice();
             notebooksPage.AddToComparisonProductWithMaxPrice();
             notebooksPage.ClickOnCompareProductsLink();
-            ñomparePage.ShowOnlyDifference();
-            ñomparePage.RemoveProductWithLessValueOfParameter("Åìêîñòü SSD");
-            ñomparePage.PutProductToBusket(out string productName, out string productPrice);
+            comparePage.ShowOnlyDifference();
+            comparePage.RemoveProductWithLessValueOfParameter("Åìêîñòü SSD");
+            comparePage.PutProductToBusket(out string productName, out string productPrice);
             mainPage.ClickOnBusketButton();
             orderPage.VerifyProductIsPresentInBasket(productName);
             orderPage.VerifyProductPrice(productPrice);

@@ -11,7 +11,7 @@ namespace Testing21Vek.Tests
         protected MainPage mainPage;
         protected SearchPage searchPage;
         protected NotebooksPage notebooksPage;
-        protected ComparePage сomparePage;
+        protected ComparePage comparePage;
         protected OrderPage orderPage;
         protected PadsPage padsPage;
         protected ConsolesPage consolesPage;
@@ -26,7 +26,7 @@ namespace Testing21Vek.Tests
             mainPage = new MainPage(driver);
             searchPage = new SearchPage(driver);
             notebooksPage = new NotebooksPage(driver);
-            сomparePage = new ComparePage(driver);
+            comparePage = new ComparePage(driver);
             orderPage = new OrderPage(driver);
             padsPage = new PadsPage(driver);
             consolesPage = new ConsolesPage(driver);
