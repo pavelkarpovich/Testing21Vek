@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing21Vek.Utilities;
 
 namespace Testing21Vek.PageObjects
@@ -30,7 +25,7 @@ namespace Testing21Vek.PageObjects
         {
             WaitUntil.WaitElement(driver, _productName);
             string actualProductName = driver.FindElement(_productName).Text;
-            Assert.AreEqual(expectedProductName, actualProductName, "The needed product is not present in basket");
+            Assert.That(actualProductName, Is.EqualTo(expectedProductName), "The needed product is not present in basket");
         }
 
         public void VerifyProductPrice(string expectedPrice)
@@ -38,7 +33,7 @@ namespace Testing21Vek.PageObjects
             WaitUntil.WaitElement(driver, _productPriceInteger);
             string actualPrice = driver.FindElement(_productPriceInteger).Text + driver.FindElement(_productPriceFraction).Text;
             actualPrice = actualPrice.Substring(0, actualPrice.LastIndexOf(" "));
-            Assert.AreEqual(expectedPrice, actualPrice, "The needed product is not present in basket");
+            Assert.That(actualPrice, Is.EqualTo(expectedPrice), "The needed product is not present in basket");
         }
 
         public void EnterPromocode(string promocode, out bool promocodePassed)
@@ -46,10 +41,11 @@ namespace Testing21Vek.PageObjects
             WaitUntil.WaitElement(driver, _promocodeTextbox);
             driver.FindElement(_promocodeTextbox).SendKeys(promocode);
             driver.FindElement(_promocodeButton).Click();
+            Thread.Sleep(200);
             if (IsElementPresent(_promocodeErrorMessage))
-                promocodePassed = true;
-            else
                 promocodePassed = false;
+            else
+                promocodePassed = true;
 
         }
 
@@ -86,16 +82,17 @@ namespace Testing21Vek.PageObjects
         public void VerifyEmailIsNotFilledErrorMessage(string expectedErrorMessage)
         {
             WaitUntil.WaitElement(driver, _emailErrorMessage);
-            Thread.Sleep(100);
+            Thread.Sleep(300);
             string actualErrorMessage = driver.FindElement(_emailErrorMessage).Text;
-            Assert.AreEqual(expectedErrorMessage, actualErrorMessage, "Email error message is not correct");
+            Assert.That(actualErrorMessage, Is.EqualTo(expectedErrorMessage), "Email error message is not correct");
         }
 
         public void VerifyPhoneNotFilledErrorMessage(string expectedErrorMessage)
         {
             WaitUntil.WaitElement(driver, _phoneErrorMessage);
+            Thread.Sleep(200);
             string actualErrorMessage = driver.FindElement(_phoneErrorMessage).Text;
-            Assert.AreEqual(expectedErrorMessage, actualErrorMessage, "Phone error message is not correct");
+            Assert.That(actualErrorMessage, Is.EqualTo(expectedErrorMessage), "Phone error message is not correct");
         }
     }
 }

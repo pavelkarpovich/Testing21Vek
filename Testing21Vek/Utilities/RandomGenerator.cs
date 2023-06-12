@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Testing21Vek.Utilities
+﻿namespace Testing21Vek.Utilities
 {
     public static class RandomGenerator
     {

@@ -1,13 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing21Vek.Utilities;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Testing21Vek.PageObjects
 {
@@ -119,15 +112,8 @@ namespace Testing21Vek.PageObjects
         public void ClickOnCompareProductsLink()
         {
             WaitUntil.WaitElement(driver, _compareProductsLink);
-            Thread.Sleep(100);
             CloseBanner();
-            Thread.Sleep(100);
             driver.FindElement(_compareProductsLink).Click();
-        }
-
-        private By GetProductBrandLocator(string brand)
-        {
-            return By.XPath($"//dt[text() = 'Производители']/..//a[text() = '{brand}']");
         }
 
         private By GetAddToComparisonLocator(int index)

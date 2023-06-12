@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing21Vek.Utilities;
 
 namespace Testing21Vek.PageObjects
@@ -16,7 +11,7 @@ namespace Testing21Vek.PageObjects
         {
         }
 
-        public void SelectProductType(string type)  //ToDo: use params
+        public void SelectProductType(string type)
         {
             WaitUntil.WaitElement(driver, _productTypeLink);
             driver.FindElement(_productTypeLink).Click();

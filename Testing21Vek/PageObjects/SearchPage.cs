@@ -1,11 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing21Vek.Utilities;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Testing21Vek.PageObjects
 {
@@ -42,7 +36,7 @@ namespace Testing21Vek.PageObjects
         {
             WaitUntil.WaitElement(driver, notificationMessage);
             string actualText = driver.FindElement(notificationMessage).Text;
-            Assert.AreEqual(expectedText, actualText, "Notification text is not correct");
+            Assert.That(actualText, Is.EqualTo(expectedText), "Notification text is not correct");
         }
 
         public void ClosePopup()

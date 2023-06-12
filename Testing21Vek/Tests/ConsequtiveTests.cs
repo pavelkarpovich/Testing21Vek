@@ -1,6 +1,3 @@
-using NUnit.Framework;
-using System.Net.Mail;
-using Testing21Vek.PageObjects;
 using Testing21Vek.Utilities;
 
 namespace Testing21Vek.Tests

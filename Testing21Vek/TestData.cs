@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Testing21Vek
+﻿namespace Testing21Vek
 {
     public static class TestData
     {

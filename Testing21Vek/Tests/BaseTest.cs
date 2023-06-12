@@ -1,11 +1,5 @@
-﻿using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing21Vek.PageObjects;
 
 namespace Testing21Vek.Tests
@@ -27,7 +21,6 @@ namespace Testing21Vek.Tests
         {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--incognito");
-            chromeOptions.AddArgument("--no-sandbox");
             driver = new ChromeDriver("/Drivers/chromedriver.exe", chromeOptions, TimeSpan.FromSeconds(130));
 
             mainPage = new MainPage(driver);

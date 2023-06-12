@@ -1,16 +1,11 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Testing21Vek.Utilities;
 
 namespace Testing21Vek.PageObjects
 {
     public class BasePage
     {
-        protected IWebDriver driver;
+        [ThreadStatic]
+        protected static IWebDriver driver;
         protected string productName;
 
         public BasePage(IWebDriver webDriver)

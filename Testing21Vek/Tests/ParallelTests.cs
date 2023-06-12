@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Testing21Vek.PageObjects;
-
-namespace Testing21Vek.Tests
+﻿namespace Testing21Vek.Tests
 {
     [TestFixture]
-    //[Parallelizable(ParallelScope.All)]
+    [Parallelizable(ParallelScope.All)]
     public class ParallelTests : BaseTest
     {
         [Test]
