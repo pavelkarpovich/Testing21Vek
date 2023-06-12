@@ -76,19 +76,20 @@ namespace Testing21Vek.PageObjects
         public void ClickOnNextButton()
         {
             WaitUntil.WaitElement(driver, _nextButton);
+            Thread.Sleep(200);
             driver.FindElement(_nextButton).Click();
         }
 
         public void VerifyEmailIsNotFilledErrorMessage(string expectedErrorMessage)
         {
             WaitUntil.WaitElement(driver, _emailErrorMessage);
-            Thread.Sleep(300);
             string actualErrorMessage = driver.FindElement(_emailErrorMessage).Text;
             Assert.That(actualErrorMessage, Is.EqualTo(expectedErrorMessage), "Email error message is not correct");
         }
 
         public void VerifyPhoneNotFilledErrorMessage(string expectedErrorMessage)
         {
+            Thread.Sleep(200);
             WaitUntil.WaitElement(driver, _phoneErrorMessage);
             Thread.Sleep(200);
             string actualErrorMessage = driver.FindElement(_phoneErrorMessage).Text;
