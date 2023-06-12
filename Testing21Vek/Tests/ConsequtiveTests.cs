@@ -1,4 +1,4 @@
-using Testing21Vek.Utilities;
+п»їusing Testing21Vek.Utilities;
 
 namespace Testing21Vek.Tests
 {
@@ -24,19 +24,19 @@ namespace Testing21Vek.Tests
             mainPage.NavigateToUrl(TestData.AppUrl);
             mainPage.AcceptCookies();
             mainPage.ClickOnCatalogButton();
-            mainPage.ClickOnProductGroup("Компьютеры и периферия");
-            mainPage.ClickOnProductSubGroup("Ноутбуки");
+            mainPage.ClickOnProductGroup("РљРѕРјРїСЊСЋС‚РµСЂС‹ Рё РїРµСЂРёС„РµСЂРёСЏ");
+            mainPage.ClickOnProductSubGroup("РќРѕСѓС‚Р±СѓРєРё");
             notebooksPage.SetPriceRange("2000", "6840");
             notebooksPage.SetInPlace();
             notebooksPage.SelectProductBrand("Lenovo");
             notebooksPage.SelectProductLines("IdeaPad L (Lenovo)", "Legion 5 Pro (Lenovo)", "ThinkPad X (Lenovo)");
-            notebooksPage.SelectProductType("игровой (геймерский)");
+            notebooksPage.SelectProductType("РёРіСЂРѕРІРѕР№ (РіРµР№РјРµСЂСЃРєРёР№)");
             notebooksPage.ClickOnShowProductsButton();
             notebooksPage.AddToComparisonProductWithAveragePrice();
             notebooksPage.AddToComparisonProductWithMaxPrice();
             notebooksPage.ClickOnCompareProductsLink();
             comparePage.ShowOnlyDifference();
-            comparePage.RemoveProductWithLessValueOfParameter("Емкость SSD");
+            comparePage.RemoveProductWithLessValueOfParameter("Р•РјРєРѕСЃС‚СЊ SSD");
             comparePage.PutProductToBusket(out string productName, out string productPrice);
             mainPage.ClickOnBusketButton();
             orderPage.VerifyProductIsPresentInBasket(productName);
