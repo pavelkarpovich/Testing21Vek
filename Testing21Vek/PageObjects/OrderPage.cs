@@ -41,7 +41,7 @@ namespace Testing21Vek.PageObjects
             WaitUntil.WaitElement(driver, _promocodeTextbox);
             driver.FindElement(_promocodeTextbox).SendKeys(promocode);
             driver.FindElement(_promocodeButton).Click();
-            Thread.Sleep(300);
+            Thread.Sleep(400);
             if (IsElementPresent(_promocodeErrorMessage))
                 promocodePassed = false;
             else
